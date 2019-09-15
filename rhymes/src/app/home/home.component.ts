@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   vocalChanged(letter, number){
+    letter = letter.toLowerCase();
     if(letter === ''){
       this.vocalesForAsonant[Number(number)] = undefined;
       this.checkAndChangeAsonantRhymes();
@@ -63,6 +64,7 @@ export class HomeComponent implements OnInit {
   }
 
   findConsonantRhymes(terminacion : string){
+   terminacion = terminacion.toLowerCase();
    return this.allWords.filter((wordObj) => {
      const isSmaller = wordObj.word.length >= terminacion.length;
      if(isSmaller){
