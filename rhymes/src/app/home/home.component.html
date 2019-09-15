@@ -1,0 +1,31 @@
+<div  class="w-100 d-flex justify-content-center">
+  <div id="rcorners1" style="margin: 0 auto;top: 20%; position: absolute; background-color: #F5F5F5; text-align: center">
+      <div *ngIf="rimasConsonantes">
+        <h5>Rimas consonantes</h5>
+        <button class="btn btn-secondary" style="font-size: 10px; margin: 10px" (click)="toggle()">Aqui para rimas asonantes</button>  
+        <div>
+          <input type="text" class="form-control" placeholder="Escribe una terminacion" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="selectedTermination" (ngModelChange)="termination($event)">
+        </div>
+      </div>  
+      <div *ngIf="!rimasConsonantes">
+        <h5>Rimas asonantes</h5>
+        <button class="btn btn-secondary" style="font-size: 10px; margin: 10px" (click)="toggle()">Aqui para rimas asonantes</button>  
+        <p>Escribe las vocales (minimo 2)</p>
+        <div class="input-group">
+            <input type="text" id="0" maxlength=1 (input)="vocalChanged($event.target.value, 0)" class="form-control" style="width: 10px">
+            <input type="text" id="1" (input)="vocalChanged($event.target.value, 1)" class="form-control" style="width: 10px">
+            <input type="text" id="2" (input)="vocalChanged($event.target.value, 2)" class="form-control" style="width: 10px">
+            <input type="text" id="3" (input)="vocalChanged($event.target.value, 3)" class="form-control" style="width: 10px">
+        </div>
+
+      </div>  
+      <cdk-virtual-scroll-viewport itemSize="30" class="example-viewport">
+        <div *cdkVirtualFor="let item of foundWords" class="example-item">
+          <p>{{item.word}}</p>
+          <!-- <a>Significado</a> -->
+        </div>
+      </cdk-virtual-scroll-viewport>
+      
+      <br>
+    </div>
+</div>
